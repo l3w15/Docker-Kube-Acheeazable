@@ -1,0 +1,15 @@
+apiVersion: v1 
+kind: Pod
+metadata:
+  name: acheezable-seed
+  labels:
+    app: web
+spec:
+  restartPolicy: Never
+  containers:
+    - name: acheezable-seed-app
+      image: acheezable:$version
+      command: ["/bin/sh","-c"]
+      args: ["sleep 15s && ./node_modules/.bin/seed"]
+      ports:
+        - containerPort: 80
