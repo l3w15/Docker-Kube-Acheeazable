@@ -1,0 +1,13 @@
+apiVersion: v1 
+kind: Pod
+metadata:
+  name: acheezable
+  labels:
+    app: web
+spec:
+  containers:
+    - name: acheezable-app
+      image: acheezable:v1
+      ports:
+        - containerPort: 80
+

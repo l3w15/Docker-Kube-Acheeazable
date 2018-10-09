@@ -1,0 +1,29 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: acheezable
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: web
+        run: acheezable
+    spec:
+      containers:
+        - name: acheezable-app
+          image: acheezable:$version
+          ports:
+            - containerPort: 80
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 3000
+            initialDelaySeconds: 5
+            periodSeconds: 15
+          livenessProbe:
+            httpGet: 
+              path: /
+              port: 3000
+            initialDelaySeconds: 15
+            periodSeconds: 15
